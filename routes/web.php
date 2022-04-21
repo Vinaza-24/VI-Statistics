@@ -22,9 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
-Route::get('/check',[PlayerController::class, 'check'])->middleware(['auth','verified'])->name('check');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth','verified'])->name('home');
 
 /*Panel Entrenador*/
