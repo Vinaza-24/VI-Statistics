@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CheckController extends Controller
 {
@@ -22,8 +23,10 @@ class CheckController extends Controller
             return view('coach.teamRegister');
         }elseif($user->team_id !== 1 && @Auth::user()->hasRole('CoachTeam')){
             return redirect()->route('home');
+        }elseif(@Auth::user()->hasRole('Generated Password')){
+            return view('reset')->with('user', $user);
         }else{
-            return "Jugador";
+            return redirect()->route('home');
         }
     }
 
@@ -41,8 +44,9 @@ class CheckController extends Controller
             $user->save();
 
             $user->removeRole('Generated Password');
+            $user->assignRole("Player");
 
-            return redirect()->route('home')->with('success','Contraseña Actualizada');
+            return redirect()->route('home')->with('success','Update Password');
         }else{
             return "ERROR";
         }
