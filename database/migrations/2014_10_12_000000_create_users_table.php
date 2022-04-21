@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('position');
+            $table->foreignId('team_id')->constrained('teams')->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('birth_date');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

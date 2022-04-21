@@ -35,10 +35,6 @@ return [
         'starts_with'      => false,
     ],
 
-    /*
-     * DataTables internal index id response column name.
-     */
-    'index_column'   => 'DT_RowIndex',
 
     /*
      * List of available builders for DataTables.

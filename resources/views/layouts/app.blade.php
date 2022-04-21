@@ -31,26 +31,22 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
-<body>
+<body style="background-image: url('https://www.yorokobu.es/wp-content/uploads/2021/05/Vanila-x-NHL_Logos_Press_images_Pattern-scaled.jpg');">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                @can('create team')
-                <a class="navbar-brand" href="{{ route('home') }}">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #17408B !important;">
+            <div class="container" >
+                @can('create player')
+                <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
                     {{ __('Home') }}
                 </a>
                 @endcan
-                @can('create team')
-                    <a class="navbar-brand" href="{{ route('home') }}">
-                        {{ __('Create Team') }}
-                    </a>
-                @endcan
+
                 @can('create player')
-                    <a class="navbar-brand" href="{{ route('panel.create.player') }}">
+                    <a class="navbar-brand" href="{{ route('panel.create.player') }}" style="color: white !important;">
                         {{ __('Create Player') }}
                     </a>
                 @endcan
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -66,24 +62,24 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" style="color: white !important;" href="{{ route('login') }}" >{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" style="color: white !important;" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
 
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('welcome') }}"><i class="fas fa-reply"></i></a>
+                                        <a class="nav-link" style="color: white !important;" href="{{ route('welcome') }}"><i class="fas fa-reply"></i></a>
                                     </li>
                                 @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color: white !important;" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="fa-solid fa-user"></i> &nbsp {{ Auth::user()->name }}
                                 </a>
 
@@ -109,6 +105,14 @@
             @yield('content')
         </main>
     </div>
+
+    <footer class="bg-light text-center text-lg-start" style="position: fixed; bottom: 0; width: 100%;">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">
+            © 2022 Copyright: VI Statistics.com
+        </div>
+        <!-- Copyright -->
+    </footer>
 </body>
 
 

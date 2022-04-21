@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 Route::get('/createPlayerPanel' , [App\Http\Controllers\PlayerController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.player');
 Route::post('/createPlayerPanel/create' , [App\Http\Controllers\PlayerController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.player.create');
 
+Route::get('/createTeamPanel' , [App\Http\Controllers\TeamController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.team');
+Route::post('/createTeamPanel/create' , [App\Http\Controllers\TeamController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.team.create');
+
+
+
+/**
+ * routes for users created by admins
+ */
+Route::get('/check',[CheckController::class, 'index'])->middleware(['auth','verified'])->name('check');
+Route::post('/check/resetPassword',[CheckController::class, 'resetPassword'])->middleware(['auth','verified'])->name('check.resetPassword');

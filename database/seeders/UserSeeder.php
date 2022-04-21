@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
 
         User::factory()->count(1)->create()->each(function ($user) {
             $user->assignRole('Coach');
-            $user->assignRole('Player');
         });
 
         User::factory()->count(12)->create()->each(function ($user) {
