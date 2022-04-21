@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'position' => ['required', 'string', 'max:255'],
+            'team_id' => ['required'],
             'birth_date' => ['required'],
         ]);
     }
@@ -71,8 +72,9 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'position' => $data['position'],
+            'team_id' => $data['team_id'],
             'birth_date' => $data['birth_date'],
-        ])->assignRole(['Coach','Player']);
+        ])->assignRole(['Coach']);
 
     }
 }

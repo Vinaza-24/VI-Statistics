@@ -19,7 +19,6 @@ class RoleSeeder extends Seeder
         /* Creación de Roles */
       $rolCoach =  Role::create(['name' =>'Coach']);
       $rolCoachTeam =  Role::create(['name' =>'CoachTeam']);
-
       $rolPlayer = Role::create(['name' =>'Player']);
 
       $GeneratedPassword =  Role::create(['name' =>'Generated Password']);
@@ -27,9 +26,8 @@ class RoleSeeder extends Seeder
 
 
        /* Creación de Permisos y asignación de rol */
-      Permission::create(['name' =>'create team'])->assignRole($rolCoach);
-      Permission::create(['name' =>'create player'])->assignRole($rolCoach);
-      Permission::create(['name' =>'players list'])->assignRole($rolCoach);
+      Permission::create(['name' =>'create player'])->assignRole($rolCoachTeam);
+      Permission::create(['name' =>'players list'])->assignRole($rolCoachTeam);
       Permission::create(['name' =>'see team'])->assignRole([$rolCoach,$rolPlayer]);
 
       Permission::create(['name' =>'generated password'])->assignRole($GeneratedPassword);

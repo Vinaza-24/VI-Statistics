@@ -30,6 +30,7 @@ class PlayerController extends Controller
     public function create(Request $request)
     {
         $password = Str::random(10);
+        $coach = User::find(auth()->id());
         $user = new User();
 
         $user->name = $request->name;
@@ -38,6 +39,7 @@ class PlayerController extends Controller
         $user->remember_token = $request->_token;
         $user->position = $request->position;
         $user->birth_date = $request->birth_date;
+        $user->team_id = $coach->team_id;
 
         $user->save();
 

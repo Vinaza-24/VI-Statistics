@@ -75,7 +75,8 @@
                             </div>
                         </div>
 
-                        <input id="position" type="hidden" class="form-control" name="position" value="coah">
+                        <input name="position" id="position" class="form-control" type="hidden" value="Coach">
+                        <input name="team_id" id="team_id" class="form-control" type="hidden" value="1">
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
