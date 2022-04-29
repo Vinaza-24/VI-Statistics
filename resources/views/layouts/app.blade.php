@@ -20,6 +20,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <style>
+        .form-check-input:checked {
+            background-color: green !important;
+            border-color: white !important;
+        }
+    </style>
+
     <!-- Data Table -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -84,6 +91,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('panel.myData') }}">
+                                        <i class="fa-solid fa-image-portrait"></i> &nbsp {{ __('My Data') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -113,22 +123,12 @@
         </div>
         <!-- Copyright -->
     </footer>
+
+
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
-
-{{--Data Table Players--}}
-<script type="text/javascript">
-    $(function () {
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('home') }}",
-            columns: [
-                {data: 'name', name: 'name'},
-                {data: 'position', name: 'position'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
-        });
-    });
-</script>
 </html>
+
+@stack('alert-card-players')
+@stack('my-data-panel')
