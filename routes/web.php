@@ -43,6 +43,11 @@ Route::post('/createGamePanel/create' , [App\Http\Controllers\GameController::cl
 /*Panel Entrenador Ver Jugador*/
 Route::get('/watchPlayer/{id_player}' , [App\Http\Controllers\PlayerController::class, 'watchPlayer'])->middleware(['auth','verified'])->name('panel.whatch.player');
 
+/*Panel Entrenador Ver Gugadores Sin Equipo*/
+Route::get('/playerPool' , [App\Http\Controllers\PlayerController::class, 'watchPlayerNoTeam'])->middleware(['auth','verified'])->name('panel.player.pool');
+Route::get('/playerPool/{id_player}' , [App\Http\Controllers\PlayerController::class, 'watchPlayerHire'])->middleware(['auth','verified'])->name('panel.hire.player');
+
+
 
 /*Panel Entrenador*/
 Route::get('/myData' , [App\Http\Controllers\PlayerController::class, 'myData'])->middleware(['auth','verified'])->name('panel.myData');

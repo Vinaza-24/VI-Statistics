@@ -92,7 +92,7 @@
                 @endif
 
                 @can('create player')
-                        <li class="nav-item dropdown navbar-brand">
+                    <li class="nav-item dropdown navbar-brand">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
                             Create
                         </a>
@@ -103,6 +103,10 @@
                             <a class="dropdown-item" href="{{ route('panel.create.game') }}">{{ __('Create Game') }}</a>
                         </div>
                     </li>
+
+                    <a class="navbar-brand" href="{{ route('panel.player.pool') }}" style="color: white !important;">
+                        {{ __('Player Pool') }}
+                    </a>
 
 
                 @endcan
@@ -169,7 +173,7 @@
         </main>
     </div>
 
-    <footer class="bg-light text-center text-lg-start" style="position: fixed; bottom: 0; width: 100%;">
+    <footer class="bg-light text-center text-lg-start" style="position: fixed; mso-margin-top:10%; bottom: 0; width: 100%;">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">
             © 2022 Copyright: VI Statistics.com

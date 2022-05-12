@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Seld\JsonLint\JsonParser;
 
 class PlayerController extends Controller
 {
@@ -102,8 +103,6 @@ class PlayerController extends Controller
 
         $player = User::find($id_player);
 
-        $player = User::find($id_player);
-
 
         $comprobacion = DB::table('statistics')->select('*')->where('player_id', "=", $id_player)->count();
 
@@ -114,16 +113,41 @@ class PlayerController extends Controller
                 ->where('player_id', '=', $id_player)
                 ->get();
 
-            $cadena = $medias;
-            $separador = '"';
-            $separada = explode($separador, $cadena);
 
-            return view('coach.watchPlayer')->with(['avg' => $separada, 'player' => $player, 'noAVG' => 0]);
+            return view('coach.watchPlayer')->with(['avg' => $medias[0], 'player' => $player, 'noAVG' => 0]);
         }else{
             return view('coach.watchPlayer')->with(['noAVG' => 1, 'player' => $player]);
         }
-
-
-
     }
+
+    public function watchPlayerNoTeam(){
+
+        $myPlayers = DB::table('users')
+            ->select( 'users.*')
+            ->where('users.team_id','like','1')
+            ->get();
+
+        return view('coach.playerPool')->with('players',$myPlayers);
+    }
+
+    public function watchPlayerHire($id_player){
+
+        $player = User::find($id_player);
+        $team_id = Auth::user()->team_id;
+
+        $players = DB::table('users')
+            ->select( 'users.*')
+            ->where('users.team_id','like',''. $team_id .'')
+            ->count();
+
+        if($players === 13){
+            return redirect()->route('panel.player.pool')->with('success', 'Player Not Hire');
+        }else {
+            $player->team_id = $team_id;
+            $player->save();
+
+            return redirect()->route('home')->with('success', 'Player Hire Successfully');
+        }
+    }
+
 }

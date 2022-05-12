@@ -44,11 +44,11 @@
 
                             <div class="col-md-6">
                                 <select class="form-select" aria-label="Default select example" id="position" name="position">
-                                    <option value="Base">Base</option>
-                                    <option value="Shooting Guard">Shooting Guard</option>
-                                    <option value="Forward">Forward</option>
-                                    <option value="Power Forward">Power Forward</option>
-                                    <option value="Center">Center</option>
+                                    <option value="BA">Base</option>
+                                    <option value="ES">Escolta</option>
+                                    <option value="AL">Alero</option>
+                                    <option value="AP">Ala-Pivot</option>
+                                    <option value="P">Pivot</option>
                                 </select>
 
                                 @error('position')
