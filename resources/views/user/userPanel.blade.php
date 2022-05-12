@@ -3,7 +3,12 @@
 @section('content')
     <div class="container">
         @if(session('success'))
-                <h6 class="alert alert-success">{{ session('success') }}</h6>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{session('success')}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         @endif
             <div class="card">
                 <div class="card-header" style="background-color: #17408B; color: white">

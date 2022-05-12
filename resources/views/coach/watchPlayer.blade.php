@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Player ') . $player->id }}</div>
-    <div class="card container" style="background-color: white !important;">
+    <div class="card container" style="background-color: white !important; margin-bottom: 5%;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -51,12 +51,12 @@
                                                 <td> Not statistics </td>
                                                 <td> Not statistics </td>
                                             @else
-                                                <td>{{$avg[3]}}</td>
-                                                <td>{{$avg[7]}}</td>
-                                                <td>{{$avg[11]}}</td>
-                                                <td>{{$avg[15]}}</td>
-                                                <td>{{$avg[19]}}</td>
-                                                <td>{{$avg[23]}}</td>
+                                                <td>{{$avg->minutos}}</td>
+                                                <td>{{$avg->puntos}}</td>
+                                                <td>{{$avg->rebotes}}</td>
+                                                <td>{{$avg->asistencias}}</td>
+                                                <td>{{$avg->robo}}</td>
+                                                <td>{{$avg->tapones}}</td>
                                             @endif
 
                                             </tbody>
