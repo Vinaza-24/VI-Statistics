@@ -95,4 +95,35 @@ class PlayerController extends Controller
 
         return redirect()->route('panel.myData')->with('success', 'Modified Data Successfully');
     }
+
+
+
+    public function watchPlayer($id_player){
+
+        $player = User::find($id_player);
+
+        $player = User::find($id_player);
+
+
+        $comprobacion = DB::table('statistics')->select('*')->where('player_id', "=", $id_player)->count();
+
+        if($comprobacion != 0){
+
+            $medias = DB::table('statistics')
+                ->select(DB::raw('AVG(min) as minutos, AVG(pts) as puntos, AVG(reb) as rebotes, AVG(ast) as asistencias, AVG(rob) as robo, AVG(tap) as tapones'))
+                ->where('player_id', '=', $id_player)
+                ->get();
+
+            $cadena = $medias;
+            $separador = '"';
+            $separada = explode($separador, $cadena);
+
+            return view('coach.watchPlayer')->with(['avg' => $separada, 'player' => $player, 'noAVG' => 0]);
+        }else{
+            return view('coach.watchPlayer')->with(['noAVG' => 1, 'player' => $player]);
+        }
+
+
+
+    }
 }

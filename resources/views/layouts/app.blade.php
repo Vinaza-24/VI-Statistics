@@ -25,6 +25,49 @@
             background-color: green !important;
             border-color: white !important;
         }
+
+        .choice{
+            box-sizing: border-box;
+            width: 100%;
+            height: auto;
+            margin-top: 10%;
+        }
+        .dra{
+            background-color: snow;
+            border-color: gray;
+            border-width: 1px;
+            border-style: dotted;
+            color: white;
+
+            font-weight: bold ;
+            width: 100% !important;
+            height: 100% !important;
+            margin-bottom: 0.5rem;
+        }
+        .cardQuintet{
+            margin-top: 10%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align-last: center;
+        }
+        .dra img{
+            width: 50%;
+            height: 50%;
+        }
+        .drop{
+            border: solid;
+            color: black;
+            border-radius: 10px;
+        }
+        .my_scroll_div{
+            overflow-y: auto;
+            max-height: 28rem;
+        }
+        .a div{
+            height: 20%!important;
+        }
+
     </style>
 
     <!-- Data Table -->
@@ -42,16 +85,26 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #17408B !important;">
             <div class="container" >
-                @can('create player')
-                <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
+                @if(Auth::user())
+                    <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
                     {{ __('Home') }}
-                </a>
-                @endcan
+                    </a>
+                @endif
 
                 @can('create player')
-                    <a class="navbar-brand" href="{{ route('panel.create.player') }}" style="color: white !important;">
-                        {{ __('Create Player') }}
-                    </a>
+                        <li class="nav-item dropdown navbar-brand">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
+                            Create
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('panel.create.player') }}">{{ __('Create Player') }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}">{{ __('Create Quintet') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.game') }}">{{ __('Create Game') }}</a>
+                        </div>
+                    </li>
+
+
                 @endcan
                 <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
                     <span class="navbar-toggler-icon"></span>
@@ -132,3 +185,4 @@
 
 @stack('alert-card-players')
 @stack('my-data-panel')
+@stack('quintet')

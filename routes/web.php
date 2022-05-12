@@ -24,13 +24,24 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth','verified'])->name('home');
 
-/*Panel Entrenador*/
+/*Panel Entrenador Crear Jugador*/
 Route::get('/createPlayerPanel' , [App\Http\Controllers\PlayerController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.player');
 Route::post('/createPlayerPanel/create' , [App\Http\Controllers\PlayerController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.player.create');
 Route::post('/createPlayerPanel/delete' , [App\Http\Controllers\PlayerController::class, 'delete'])->middleware(['auth','verified'])->name('panel.create.player.delete');
 
+/*Panel Entrenador Crear Team*/
 Route::get('/createTeamPanel' , [App\Http\Controllers\TeamController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.team');
 Route::post('/createTeamPanel/create' , [App\Http\Controllers\TeamController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.team.create');
+
+/*Panel Entrenador Crear Quinteto*/
+Route::get('/createQuintetPanel' , [App\Http\Controllers\QuintetController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.quintet');
+
+/*Panel Entrenador Crear Games*/
+Route::get('/createGamePanel' , [App\Http\Controllers\GameController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.game');
+Route::post('/createGamePanel/create' , [App\Http\Controllers\GameController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.game.create');
+
+/*Panel Entrenador Ver Jugador*/
+Route::get('/watchPlayer/{id_player}' , [App\Http\Controllers\PlayerController::class, 'watchPlayer'])->middleware(['auth','verified'])->name('panel.whatch.player');
 
 
 /*Panel Entrenador*/

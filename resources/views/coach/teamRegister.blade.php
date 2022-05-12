@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Team') }}</div>
+                <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Create Team') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('panel.create.team.create') }}">
@@ -52,4 +52,8 @@
         </div>
     </div>
 </div>
+
+
+
+
 @endsection
