@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin-bottom: 10%;">
                 <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Create Game') }}</div>
 
                 <div class="card-body">
