@@ -113,6 +113,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
+
 </head>
 <body style="background-image: url('https://www.yorokobu.es/wp-content/uploads/2021/05/Vanila-x-NHL_Logos_Press_images_Pattern-scaled.jpg');">
     <div id="app">
@@ -130,23 +131,29 @@
                             {{ __('Create') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('panel.create.player') }}"><i class="fa-solid fa-user-plus"></i> {{ __('Create Player') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.player') }}"><i class="fa-solid fa-user-plus"></i> {{ __('Player') }}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Create Quintet') }}</a>
-                            <a class="dropdown-item" href="{{ route('panel.create.game') }}"><i class="fa-solid fa-trophy"></i> {{ __('Create Game') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.game') }}"><i class="fa-solid fa-trophy"></i> {{ __('Game') }}</a>
                         </div>
                     </li>
 
                     <a class="navbar-brand" href="{{ route('panel.player.pool') }}" style="color: white !important;">
                         <i class="fa-solid fa-people-group"></i> {{ __('Player Pool') }}
                     </a>
-                    <a class="navbar-brand" href="{{ route('panel.whatch.team') }}" style="color: white !important;">
-                        <i class="fa-solid fa-sitemap"></i> {{ __('Whatch Team') }}
-                    </a>
-
-
                 @endcan
-                <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
+                    <li class="nav-item dropdown navbar-brand">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
+                            {{ __('Whatch') }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('panel.whatch.team') }}"><i class="fa-solid fa-sitemap"></i> {{ __('Team') }}</a>
+                            @can('create player')
+                                <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                            @endcan
+                        </div>
+                    </li>
+                    <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 

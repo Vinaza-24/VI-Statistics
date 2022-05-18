@@ -66,7 +66,8 @@ class PlayerController extends Controller
     public function delete(Request $request)
     {
         $player = User::find($request->id);
-        $player->delete();
+        $player->team_id = 1;
+        $player->save();
 
         return redirect()->route('home')->with('success', 'Player Delete Successfully');
     }
