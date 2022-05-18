@@ -20,6 +20,15 @@ class HomeController extends Controller
             ->where('users.team_id','like',''. $id .'')
             ->get();
 
-        return view('home')->with('players',$myPlayers);
+        $comprobacion = DB::table('statistics')->select('*')->where('player_id', "=", Auth::user()->id)->count();
+        if($comprobacion != 0){
+            $medias = DB::table('statistics')
+                ->select(DB::raw('AVG(min) as minutos, AVG(pts) as puntos, AVG(reb) as rebotes, AVG(ast) as asistencias, AVG(rob) as robo, AVG(tap) as tapones'))
+                ->where('player_id', '=', $user->id)
+                ->get();
+            return view('home')->with(['avg' => $medias[0],'noAVG' => 0, 'players'=> $myPlayers]);
+        }else{
+            return view('home')->with(['noAVG' => 1,'players'=> $myPlayers]);
+        }
     }
 }

@@ -35,6 +35,7 @@ Route::post('/createTeamPanel/create' , [App\Http\Controllers\TeamController::cl
 
 /*Panel Entrenador Crear Quinteto*/
 Route::get('/createQuintetPanel' , [App\Http\Controllers\QuintetController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.quintet');
+Route::post('/createQuintetPanel/create' , [App\Http\Controllers\QuintetController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.quintet.create');
 
 /*Panel Entrenador Crear Games*/
 Route::get('/createGamePanel' , [App\Http\Controllers\GameController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.game');
@@ -42,6 +43,9 @@ Route::post('/createGamePanel/create' , [App\Http\Controllers\GameController::cl
 
 /*Panel Entrenador Ver Jugador*/
 Route::get('/watchPlayer/{id_player}' , [App\Http\Controllers\PlayerController::class, 'watchPlayer'])->middleware(['auth','verified'])->name('panel.whatch.player');
+
+/*Panel Entrenador Ver Equipo*/
+Route::get('/watchTeam' , [App\Http\Controllers\PlayerController::class, 'watchTeam'])->middleware(['auth','verified'])->name('panel.whatch.team');
 
 /*Panel Entrenador Ver Gugadores Sin Equipo*/
 Route::get('/playerPool' , [App\Http\Controllers\PlayerController::class, 'watchPlayerNoTeam'])->middleware(['auth','verified'])->name('panel.player.pool');
