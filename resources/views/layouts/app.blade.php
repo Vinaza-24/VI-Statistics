@@ -120,25 +120,28 @@
             <div class="container" >
                 @if(Auth::user())
                     <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
-                    {{ __('Home') }}
+                        <i class="fa-solid fa-house"></i> {{ __('Home') }}
                     </a>
                 @endif
 
                 @can('create player')
                     <li class="nav-item dropdown navbar-brand">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
-                            Create
+                            {{ __('Create') }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('panel.create.player') }}">{{ __('Create Player') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.player') }}"><i class="fa-solid fa-user-plus"></i> {{ __('Create Player') }}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}">{{ __('Create Quintet') }}</a>
-                            <a class="dropdown-item" href="{{ route('panel.create.game') }}">{{ __('Create Game') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Create Quintet') }}</a>
+                            <a class="dropdown-item" href="{{ route('panel.create.game') }}"><i class="fa-solid fa-trophy"></i> {{ __('Create Game') }}</a>
                         </div>
                     </li>
 
                     <a class="navbar-brand" href="{{ route('panel.player.pool') }}" style="color: white !important;">
-                        {{ __('Player Pool') }}
+                        <i class="fa-solid fa-people-group"></i> {{ __('Player Pool') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ route('panel.whatch.team') }}" style="color: white !important;">
+                        <i class="fa-solid fa-sitemap"></i> {{ __('Whatch Team') }}
                     </a>
 
 

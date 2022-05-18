@@ -29,8 +29,8 @@
                                         <input type="text" style="width: 100%;" value="{{$player->position}}"  readonly/>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12" style="text-align: center">
+                                <div class="row" style="align-self: center;">
+                                    <div class="col-md-12" style="text-align: center;">
                                         <table class="table table-responsive" style="width: 100%; margin-bottom: 10%">
                                             <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                                             <tr>
@@ -51,12 +51,12 @@
                                                 <td> Not statistics </td>
                                                 <td> Not statistics </td>
                                             @else
-                                                <td>{{$avg->minutos}}</td>
-                                                <td>{{$avg->puntos}}</td>
-                                                <td>{{$avg->rebotes}}</td>
-                                                <td>{{$avg->asistencias}}</td>
-                                                <td>{{$avg->robo}}</td>
-                                                <td>{{$avg->tapones}}</td>
+                                                <td>{{number_format($avg->minutos, 2)}}</td>
+                                                <td>{{number_format($avg->puntos, 2)}}</td>
+                                                <td>{{number_format($avg->rebotes, 2)}}</td>
+                                                <td>{{number_format($avg->asistencias, 2)}}</td>
+                                                <td>{{number_format($avg->robo, 2)}}</td>
+                                                <td>{{number_format($avg->tapones, 2)}}</td>
                                             @endif
 
                                             </tbody>

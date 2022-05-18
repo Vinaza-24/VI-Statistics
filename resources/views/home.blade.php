@@ -30,7 +30,7 @@
                                     <h5 class="card-title">{{$player->name}}</h5>
                                     <h5 class="card-title">Position <i class="fa-solid fa-arrow-right"></i> {{$player->position}}</h5>
                                     <h5 class="card-title">Number <i class="fa-solid fa-arrow-right"></i> {{$player->id}}</h5>
-                                    <a href="{{ route('panel.whatch.player', ['id_player' => $player->id]) }}"  class="btn center" style="color: white; text-shadow: 0 0 5px black; float:left; margin-right: 1%; width: 100%; background-color: #17408B !important;">Show</a>
+                                    <a href="{{ route('panel.whatch.player', ['id_player' => $player->id]) }}"  class="btn center" style="color: white; text-shadow: 0 0 5px black; float:left; margin-right: 1%; width: 100%; background-color: #17408B !important;"><i class="fa-solid fa-eye"></i> Show</a>
 
                                     <form method="POST" action="{{ route('panel.create.player.delete')}}" name="deleteAlert{{$player->id}}" id="deleteAlert{{$player->id}}">
                                         @csrf
@@ -51,7 +51,7 @@
                     <h4>My statistics:</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-responsive-md" style="width: 100%; margin-bottom: 10%">
+                    <table class="table table-responsive" style="width: 100%; margin-bottom: 10%">
                         <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                         <tr>
                             <th scope="col">Min</th>
@@ -71,12 +71,12 @@
                             <td> Not statistics </td>
                             <td> Not statistics </td>
                         @else
-                            <td>{{$avg->minutos}}</td>
-                            <td>{{$avg->puntos}}</td>
-                            <td>{{$avg->rebotes}}</td>
-                            <td>{{$avg->asistencias}}</td>
-                            <td>{{$avg->robo}}</td>
-                            <td>{{$avg->tapones}}</td>
+                            <td>{{number_format($avg->minutos, 2)}}</td>
+                            <td>{{number_format($avg->puntos, 2)}}</td>
+                            <td>{{number_format($avg->rebotes, 2)}}</td>
+                            <td>{{number_format($avg->asistencias, 2)}}</td>
+                            <td>{{number_format($avg->robo, 2)}}</td>
+                            <td>{{number_format($avg->tapones, 2)}}</td>
                         @endif
 
                         </tbody>
