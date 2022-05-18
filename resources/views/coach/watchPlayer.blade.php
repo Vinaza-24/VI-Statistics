@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12" style="text-align: center">
-                                        <table class="table table-responsive-md" style="width: 100%; margin-bottom: 10%">
+                                        <table class="table table-responsive" style="width: 100%; margin-bottom: 10%">
                                             <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                                             <tr>
                                                 <th scope="col">Min</th>

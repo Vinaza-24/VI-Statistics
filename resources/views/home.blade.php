@@ -51,34 +51,34 @@
                     <h4>My statistics:</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead class="thead-dark">
+                    <table class="table table-responsive-md" style="width: 100%; margin-bottom: 10%">
+                        <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Min</th>
+                            <th scope="col">Pts</th>
+                            <th scope="col">Reb</th>
+                            <th scope="col">Ast</th>
+                            <th scope="col">Rob</th>
+                            <th scope="col">Tap</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @if($noAVG == 1)
+                            <td> Not statistics </td>
+                            <td> Not statistics </td>
+                            <td> Not statistics </td>
+                            <td> Not statistics </td>
+                            <td> Not statistics </td>
+                            <td> Not statistics </td>
+                        @else
+                            <td>{{$avg->minutos}}</td>
+                            <td>{{$avg->puntos}}</td>
+                            <td>{{$avg->rebotes}}</td>
+                            <td>{{$avg->asistencias}}</td>
+                            <td>{{$avg->robo}}</td>
+                            <td>{{$avg->tapones}}</td>
+                        @endif
+
                         </tbody>
                     </table>
                 </div>

@@ -5,29 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Register') }}</div>
+                <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Create Game') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('panel.create.game.create') }}">
                         @csrf
 
                         <div class="row">
-                        <div class="col-md-6">
-                            <label>Team 1</label>
-                            <select class="form-select" id="team1" name="team1">
-                                <option selected>Select a Team 1</option>
-                                @foreach($array['teams'] as $team)
-                                    @if($team->name != "Sin Equipo")
-                                        <option value="{{$team->id}}">{{$team->name}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
 
-                        <div class="col-md-6">
-                            <label>Team 2</label>
+                        <div class="col-md-12">
+                            <label>Opposing team</label>
                             <select class="form-select" id="team2" name="team2">
-                                <option selected>Select a Team 2</option>
+                                <option selected>Opposing team</option>
                                 @foreach($array['teams'] as $team)
                                     @if($team->name != "Sin Equipo")
                                         <option value="{{$team->id}}">{{$team->name}}</option>

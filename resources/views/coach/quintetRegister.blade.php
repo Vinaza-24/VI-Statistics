@@ -1,110 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid a" style="margin-bottom: 10%; width: 90%;">
-        <div class="row">
-            <div class="col-md-2 my_scroll_div" style="background-color: white;">
-                <h3>
-                    Jugadores:
-                </h3>
-                <div class="col-md-12 choice " style="width: 100%">
-                    @foreach($players as $players => $player)
-                        <div class="dra" draggable="true">
-                            <div class="col-md-12 cardQuintet">
-                                <img src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" />
-                                <input style="width: 100%;" type="text" value="{{$player->name}}" readonly>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="col-md-10" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/819/186/large_2x/perspective-basketball-half-court-floor-with-line-on-wood-texture-background-illustration-vector.jpg');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4 choice drop">
-                                <h3>
-                                    BA:
-                                </h3>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
+    <div class="parent">
+        <div class="div1 my_scroll_div choice" >
+            <h1>Players:</h1>
+            @foreach($players as $players => $player)
+                <div class="dra" draggable="true">
+                    <div class="col-md-12 cardQuintet">
+                        <img src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" />
+                        <input style="width: 100%;" type="text" value="{{$player->name}}" readonly>
+                        <input  type="hidden" class="idJugador" value="{{$player->id}}" readonly>
+
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4 choice drop">
-                                <h3>
-                                    ES:
-                                </h3>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4 choice drop">
-                                <h3>
-                                    AL:
-                                </h3>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
+            @endforeach
+        </div>
+
+        <div class="div2" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/819/186/large_2x/perspective-basketball-half-court-floor-with-line-on-wood-texture-background-illustration-vector.jpg');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;"> </div>
+
+        <div class="div3">
+            <div class="row">
+                <div class="col-2">
+                    <label>Quintet name</label>
                 </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4 choice drop">
-                                <h3>
-                                    P:
-                                </h3>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4 choice drop">
-                                <h3>
-                                    AP:
-                                </h3>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                    </div>
+                <div class="col">
+                    <input type="text" name="name_quintet"  id="name_quintet"  class="form-control" placeholder="Quintet name...">
                 </div>
-            </div>
-            <div class="col-md-12" style="background-color: white;">
-                <div class="row">
-                    <div class="col-md-2">
-                        <h5 style="margin: 1rem;font-weight: bold">Name Quintet:</h5>
-                    </div>
-                    <div class="col-md-9">
-                        <input name="name_quintet" id="name_quintet" style="width: 95%; margin: 1rem;" type="text" placeholder="Name Quintet..." width="150px">
-                    </div>
-                    <div class="col-md-1">
-                        <button style="margin: 1rem;" type="button" class="btn btn-primary">Create</button>
-                    </div>
+                <div class="col-2">
+                    <button type="submit" onclick="eneviar()" class="btn btn-warning">Create Quintet</button>
                 </div>
             </div>
         </div>
+
+        {{--        <form method="POST" action="{{ route('panel.create.quintet.create') }}">--}}
+        <div class="div4 choice drop" > </div>
+        <div class="div5 choice drop" > </div>
+        <div class="div6 choice drop" > </div>
+        <div class="div7 choice drop" > </div>
+        <div class="div8 choice drop" > </div>
+        {{--        </form>--}}
     </div>
 @endsection
 
@@ -147,6 +81,57 @@
             e.preventDefault()
         }
         function dragLeave(){
+        }
+
+
+        function eneviar(){
+
+            elementos = document.querySelectorAll(".drop");
+
+            card1 = elementos[0].querySelector(".cardQuintet")?.querySelector(".idJugador")?.value;
+            card2 = elementos[1].querySelector(".cardQuintet")?.querySelector(".idJugador")?.value;
+            card3 = elementos[2].querySelector(".cardQuintet")?.querySelector(".idJugador")?.value;
+            card4 = elementos[3].querySelector(".cardQuintet")?.querySelector(".idJugador")?.value;
+            card5 = elementos[4].querySelector(".cardQuintet")?.querySelector(".idJugador")?.value;
+
+            name_quintet = document.querySelector("#name_quintet")?.value;
+
+            if(card1 && card2 && card3 && card4 && card5 && name_quintet){
+                console.log(card1);
+                console.log(card2);
+                console.log(card3);
+                console.log(card4);
+                console.log(card5);
+                console.log(name_quintet);
+
+
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url:'/createQuintetPanel/create',
+                    data:{'player1': card1,
+                          'player2': card2,
+                          'player3': card3,
+                          'player4': card4,
+                          'player5': card5,
+                          'name_quintet': name_quintet},
+                    type:'post',
+                    success: function (response) {
+                        alert(response)
+                    },
+                    error:function(x,xs,xt){
+                        window.open(JSON.stringify(x));
+                    }
+                });
+
+            }else{
+                console.log("No Enviar");
+            }
         }
 
     </script>

@@ -27,7 +27,9 @@ class GameController extends Controller
                     ->where("position" , "!=", "Coach")
                     ->get();
 
-        $teams = Team::all();
+        $teams = DB::table('teams')
+            ->where("id", "!=", Auth::user()->team_id)
+            ->get();
 
 
         return view('coach.gameRegister', ['array' => ['teams' => $teams,'players' => $players,]]);
@@ -55,8 +57,8 @@ class GameController extends Controller
         $union = DB::table('union_games_teams')->insert([
             "id" => $gameDate->id,
             "game_id" =>  $gameDate->id,
-            "team1_id" => $request->team1,
-            "team2_id" => $request->team1,
+            "team1_id" => Auth::user()->team_id,
+            "team2_id" => $request->team2,
         ]);
 
         foreach ($players as $player){
