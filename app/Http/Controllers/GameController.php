@@ -27,12 +27,17 @@ class GameController extends Controller
                     ->where("position" , "!=", "Coach")
                     ->get();
 
+        $numPlayer = DB::table('users')
+                    ->where("team_id", "=", Auth::user()->team_id)
+                    ->where("position" , "!=", "Coach")
+                    ->count();
+
         $teams = DB::table('teams')
             ->where("id", "!=", Auth::user()->team_id)
             ->get();
 
 
-        return view('coach.gameRegister', ['array' => ['teams' => $teams,'players' => $players,]]);
+        return view('coach.gameRegister', ['array' => ['teams' => $teams,'players' => $players,'numPlayers' => $numPlayer]]);
     }
 
     /**

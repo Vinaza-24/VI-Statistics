@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="https://kit.fontawesome.com/2512e4cd7e.js" crossorigin="anonymous"></script>
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -101,6 +102,12 @@
         .dra input{
             width: 9rem !important;
         }
+
+        #chart-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
     </style>
 
     <!-- Data Table -->
@@ -142,6 +149,8 @@
                         <i class="fa-solid fa-people-group"></i> {{ __('Player Pool') }}
                     </a>
                 @endcan
+
+                @if(Auth::user())
                     <li class="nav-item dropdown navbar-brand">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
                             {{ __('Whatch') }}
@@ -156,6 +165,7 @@
                     <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                @endif
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -227,9 +237,14 @@
 
     <!-- Sweet Alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://fastly.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+
 </body>
 </html>
 
 @stack('alert-card-players')
+@stack('alert-card-create-game')
 @stack('my-data-panel')
 @stack('quintet')
+@stack('echarts-player')

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <input type="hidden" id="alertaMenos5Players" value="{{$numPlayers }}" />
+
+    @if($numPlayers >= 5)
     <div class="parent">
         <div class="div1 my_scroll_div choice" >
             <h1>Players:</h1>
@@ -40,12 +44,30 @@
         <div class="div8 choice drop" > </div>
         {{--        </form>--}}
     </div>
+    @endif
 @endsection
 
 
 
 @push('quintet')
     <script>
+        $(document).ready(function()
+        {
+            if(document.getElementById('alertaMenos5Players').value < 5){
+                Swal.fire({
+                    title: 'Oops...',
+                    text: "You don't have the minimum number of players to create a match!",
+                    icon: 'error',
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Return'
+                }).then((result) => {
+                    window.location.href = "/home";
+                })
+            }
+        });
+
         let p = document.getElementsByClassName('dra');
         let choice = document.getElementsByClassName('choice');
         let dragItem = null;
@@ -130,9 +152,17 @@
                 });
 
             }else{
-                console.log("No Enviar");
+                Swal.fire({
+                    title: 'Oops...',
+                    text: "You don't have the minimum number of players to create a quintet!",
+                    icon: 'error',
+                    showCancelButton: true,
+                    showConfirmButton: false,
+                    cancelButtonText: 'Ok'
+                })
             }
         }
 
     </script>
 @endpush
+
