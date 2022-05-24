@@ -26,8 +26,12 @@ class QuintetController extends Controller
                     ->where("team_id", "=", Auth::user()->team_id)
                     ->where("position" , "!=", "Coach")
                     ->get();
+        $numPlayers = DB::table('users')
+                    ->where("team_id", "=", Auth::user()->team_id)
+                    ->where("position" , "!=", "Coach")
+                    ->count();
 
-        return view('coach.quintetRegister', ['players' => $players]);
+        return view('coach.quintetRegister', ['players' => $players, 'numPlayers'=> $numPlayers]);
     }
 
     /**

@@ -4,71 +4,122 @@
 
     <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Player ') . $player->id }}</div>
     <div class="card container" style="background-color: white !important; margin-bottom: 5%;">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
 
-                        <div class="row">
-                            <div class="col-md-6" >
-                                <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6" class="card-img-top" alt="...">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="chart-container"></div>
+                        </div>
+                        <div class="col-md-6"
+                             style="display: flex;flex-direction: column; justify-content: space-evenly;">
+                            <div class="row">
+                                <div class="col-md-12" style="text-align: center; margin-bottom: 10%">
+                                    <img
+                                        src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6"
+                                        class="card-img-top" style="width: 50%;">
+                                    <h4>{{$player->name}}</h4>
 
-                            </div>
-                            <div class="col-md-6" style="display: flex;flex-direction: column; justify-content: space-evenly;">
-                                <div class="row">
-                                    <div class="col-md-12"  style="width: 100%; margin-bottom: 10%">
-                                        <label style="font-weight: bold">Name:</label>
-                                        <input type="text" style="width: 100%;" value="{{$player->name}}"  readonly/>
+                                    <label style="font-weight: bold">Birth Date:</label>
+                                    <h5>{{$player->birth_date}}</h5>
 
-                                        <label style="font-weight: bold">Birth Date:</label>
-                                        <input type="text" style="width: 100%;" value="{{$player->birth_date}}"  readonly/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12" style="width: 100%; margin-bottom: 10%">
-                                        <label style="font-weight: bold">Position:</label>
-                                        <input type="text" style="width: 100%;" value="{{$player->position}}"  readonly/>
-                                    </div>
-                                </div>
-                                <div class="row" style="align-self: center;">
-                                    <div class="col-md-12" style="text-align: center;">
-                                        <table class="table table-responsive" style="width: 100%; margin-bottom: 10%">
-                                            <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
-                                            <tr>
-                                                <th scope="col">Min</th>
-                                                <th scope="col">Pts</th>
-                                                <th scope="col">Reb</th>
-                                                <th scope="col">Ast</th>
-                                                <th scope="col">Rob</th>
-                                                <th scope="col">Tap</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if($noAVG == 1)
-                                                <td> Not statistics </td>
-                                                <td> Not statistics </td>
-                                                <td> Not statistics </td>
-                                                <td> Not statistics </td>
-                                                <td> Not statistics </td>
-                                                <td> Not statistics </td>
-                                            @else
-                                                <td>{{number_format($avg->minutos, 2)}}</td>
-                                                <td>{{number_format($avg->puntos, 2)}}</td>
-                                                <td>{{number_format($avg->rebotes, 2)}}</td>
-                                                <td>{{number_format($avg->asistencias, 2)}}</td>
-                                                <td>{{number_format($avg->robo, 2)}}</td>
-                                                <td>{{number_format($avg->tapones, 2)}}</td>
-                                            @endif
+                                    <label style="font-weight: bold">Position:</label>
+                                    <h5>{{$player->position}}</h5>
 
-                                            </tbody>
-                                        </table>
+                                    @if($noAVG == 1)
+                                        <input type="hidden" id="min"  value="0"/>
+                                        <input type="hidden" id="pun"  value="0"/>
+                                        <input type="hidden" id="reb"  value="0"/>
+                                        <input type="hidden" id="asi"  value="0"/>
+                                        <input type="hidden" id="rob"  value="0" />
+                                        <input type="hidden" id="tapo" value="0"/>
+                                    @else
+                                        <input type="hidden" id="min"  value="{{number_format($avg->minutos, 2)}}"/>
+                                        <input type="hidden" id="pun"  value="{{number_format($avg->puntos, 2)}}"/>
+                                        <input type="hidden" id="reb"  value="{{number_format($avg->rebotes, 2)}}"/>
+                                        <input type="hidden" id="asi"  value="{{number_format($avg->asistencias, 2)}}"/>
+                                        <input type="hidden" id="rob"  value="{{number_format($avg->robo, 2)}}"/>
+                                        <input type="hidden" id="tapo" value="{{number_format($avg->tapones, 2)}}"/>
+                                    @endif
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        @endsection
+        @push('echarts-player')
 
-    </div>
-@endsection
+            <script>
+
+                $(document).ready(function () {
+                    let min = document.getElementById("min")?.value;
+                    let pun = document.getElementById("pun")?.value;
+                    let asi = document.getElementById("asi")?.value;
+                    let reb = document.getElementById("reb")?.value;
+                    let rob = document.getElementById("rob")?.value;
+                    let tapo = document.getElementById("tapo")?.value;
+
+                    var dom = document.getElementById('chart-container');
+                    var myChart = echarts.init(dom, null, {
+                        renderer: 'canvas',
+                        useDirtyRect: false
+                    });
+                    var app = {};
+
+                    var option;
+
+                    option = {
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            left: 'center',
+                            data: [
+                                'A Software',
+                            ]
+                        },
+                        radar: [
+                            {
+                                indicator: [
+                                    {name: 'Minutos', max: 48},
+                                    {name: 'Puntos', max: 60},
+                                    {name: 'Asistencias', max: 15},
+                                    {name: 'Rebotes', max: 30},
+                                    {name: 'Robos', max: 10},
+                                    {name: 'Tapones', max: 10}
+                                ],
+                                center: ['50%', '50%'],
+                                radius: 150
+                            },
+                        ],
+                        series: [
+                            {
+                                type: 'radar',
+                                tooltip: {
+                                    trigger: 'item'
+                                },
+                                areaStyle: {},
+                                data: [
+                                    {
+                                        value: [min, pun, asi, reb, rob, tapo],
+                                        name: 'Statistics'
+                                    }
+                                ]
+                            },
+                        ]
+                    };
+
+                    if (option && typeof option === 'object') {
+                        myChart.setOption(option);
+                    }
+
+                    window.addEventListener('resize', myChart.resize);
+                });
+
+
+            </script>
+    </div>@endpush
