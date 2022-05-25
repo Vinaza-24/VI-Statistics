@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    @if(session('success'))
+    @if(session('danger'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{session('success')}}</strong>
+            <strong>{{session('danger')}}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -22,7 +22,7 @@
         <div class="row align-content-center" style="margin-bottom: 3%">
             @foreach($players as $player)
                 @if($player->position !== 'Coach')
-                    <div class="col-sm-3 m-6 mb-3 mt-3">
+                    <div class="col-sm-6  col-md-4 m-6 mb-3 mt-3">
                         <div class="card" style="float: left;  background-color: white">
                             <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6" class="card-img-top" alt="...">
                             <div class="card-body">

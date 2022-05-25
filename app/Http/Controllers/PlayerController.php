@@ -39,7 +39,7 @@ class PlayerController extends Controller
             ->count();
 
         if($players === 13){
-            return redirect()->route('home')->with('success', 'Player Not Created');
+            return redirect()->route('home')->with('danger', 'Player Not Created, You have the maximum number of players');
         }else {
             $password = Str::random(10);
             $coach = User::find(auth()->id());
@@ -142,7 +142,7 @@ class PlayerController extends Controller
             ->count();
 
         if($players === 13){
-            return redirect()->route('panel.player.pool')->with('success', 'Player Not Hire');
+            return redirect()->route('panel.player.pool')->with('danger', 'Player Not Hire, You have the maximum number of players');
         }else {
             $player->team_id = $team_id;
             $player->save();

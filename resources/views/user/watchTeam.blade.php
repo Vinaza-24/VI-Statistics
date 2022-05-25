@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-            <div class="card">
+            <div class="card" style="margin-bottom: 5%;">
                 <div class="card-header" style="background-color: #17408B; color: white">
                         <h4>{{ __('My Team') }}</h4>
                 </div>
                 <div class="card-body" style="align-self: center;">
-                    <table class="table table-responsive" style="width: 100%;">
+                    <table class="table table-responsive-md" style="width: 100%;">
                         <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                         <tr>
                             <th scope="col">Name</th>
