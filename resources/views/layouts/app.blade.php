@@ -27,13 +27,11 @@
             border-color: white !important;
         }
 
-
         .a div{
             height: 20%!important;
         }
 
-
-
+        /*QUINTETOS*/
         .parent {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -108,6 +106,8 @@
             height: 100vh;
             overflow: hidden;
         }
+
+        /**/
     </style>
 
     <!-- Data Table -->
@@ -123,122 +123,124 @@
 
 </head>
 <body style="background-image: url('https://www.yorokobu.es/wp-content/uploads/2021/05/Vanila-x-NHL_Logos_Press_images_Pattern-scaled.jpg');">
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #17408B !important;">
-            <div class="container" >
-                @if(Auth::user())
-                    <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
-                        <i class="fa-solid fa-house"></i> {{ __('Home') }}
-                    </a>
-                @endif
+<div id="app">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #17408B !important;">
+        <div class="container" >
+            @if(Auth::user())
+                <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
+                    <i class="fa-solid fa-house"></i> {{ __('Home') }}
+                </a>
+            @endif
 
-                @can('create player')
-                    <li class="nav-item dropdown navbar-brand">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
-                            {{ __('Create') }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('panel.create.player') }}"><i class="fa-solid fa-user-plus"></i> {{ __('Player') }}</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
-                            <a class="dropdown-item" href="{{ route('panel.create.game') }}"><i class="fa-solid fa-trophy"></i> {{ __('Game') }}</a>
-                        </div>
-                    </li>
-
-                    <a class="navbar-brand" href="{{ route('panel.player.pool') }}" style="color: white !important;">
-                        <i class="fa-solid fa-people-group"></i> {{ __('Player Pool') }}
-                    </a>
-                @endcan
-
-                @if(Auth::user())
-                    <li class="nav-item dropdown navbar-brand">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
-                            {{ __('Whatch') }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('panel.whatch.team') }}"><i class="fa-solid fa-sitemap"></i> {{ __('Team') }}</a>
-                            @can('create player')
-                                <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
-                            @endcan
-                        </div>
-                    </li>
-                    <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
+            @if(Auth::user())
+                <button class="navbar-toggler" type="button"   data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }} ">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @endif
+            @endif
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
 
-                    </ul>
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" style="color: white !important;" href="{{ route('login') }}" >{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto" style="display: flex; align-items: center;">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white !important;" href="{{ route('login') }}" >{{ __('Login') }}</a>
+                            </li>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" style="color: white !important;" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white !important;" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
 
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" style="color: white !important;" href="{{ route('welcome') }}"><i class="fas fa-reply"></i></a>
-                                    </li>
-                                @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color: white !important;" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa-solid fa-user"></i> &nbsp {{ Auth::user()->name }}
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: white !important;" href="{{ route('welcome') }}"><i class="fas fa-reply"></i></a>
+                            </li>
+                        @endif
+                    @else
+                        @can('create player')
+                            <li class="nav-item dropdown navbar-brand">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
+                                    {{ __('Create') }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('panel.myData') }}">
-                                        <i class="fa-solid fa-image-portrait"></i> &nbsp {{ __('My Data') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="fa-solid fa-right-from-bracket"></i> &nbsp {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('panel.create.player') }}"><i class="fa-solid fa-user-plus"></i> {{ __('Player') }}</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                                    <a class="dropdown-item" href="{{ route('panel.create.game') }}"><i class="fa-solid fa-trophy"></i> {{ __('Game') }}</a>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
+
+                            <a class="navbar-brand" href="{{ route('panel.player.pool') }}" style="color: white !important;">
+                                <i class="fa-solid fa-people-group"></i> {{ __('Player Pool') }}
+                            </a>
+                        @endcan
+
+                        @if(Auth::user())
+                            <li class="nav-item dropdown navbar-brand">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white!important;">
+                                    {{ __('Whatch') }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('panel.whatch.team') }}"><i class="fa-solid fa-sitemap"></i> {{ __('Team') }}</a>
+                                    @can('create player')
+                                        <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                                    @endcan
+                                </div>
+                            </li>
+                        @endif
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color: white !important;" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa-solid fa-user"></i> &nbsp {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('panel.myData') }}">
+                                    <i class="fa-solid fa-image-portrait"></i> &nbsp {{ __('My Data') }}
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-right-from-bracket"></i> &nbsp {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-    <footer class="bg-light text-center text-lg-start" style="position: fixed; mso-margin-top:10%; bottom: 0; width: 100%;">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">
-            © 2022 Copyright: VI Statistics.com
         </div>
-        <!-- Copyright -->
-    </footer>
+    </nav>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
+
+<footer class="bg-light text-center text-lg-start" style="position: fixed; mso-margin-top:10%; bottom: 0; width: 100%;">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">
+        © 2022 Copyright: VI Statistics.com
+    </div>
+    <!-- Copyright -->
+</footer>
 
 
-    <!-- Sweet Alert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Sweet Alert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="https://fastly.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
 
 </body>
 </html>

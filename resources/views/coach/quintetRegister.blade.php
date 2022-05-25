@@ -5,45 +5,45 @@
     <input type="hidden" id="alertaMenos5Players" value="{{$numPlayers }}" />
 
     @if($numPlayers >= 5)
-    <div class="parent">
-        <div class="div1 my_scroll_div choice" >
-            <h1>Players:</h1>
-            @foreach($players as $players => $player)
-                <div class="dra" draggable="true">
-                    <div class="col-md-12 cardQuintet">
-                        <img src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" class="rounded-circle" />
-                        <input style="width: 100%;" type="text" value="{{$player->name}}" readonly>
-                        <input  type="hidden" class="idJugador" value="{{$player->id}}" readonly>
+        <div class="parent">
+            <div class="div1 my_scroll_div choice" >
+                <h1>Players:</h1>
+                @foreach($players as $players => $player)
+                    <div class="dra" draggable="true">
+                        <div class="col-md-12 cardQuintet">
+                            <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6" class="rounded-circle" />
+                            <input style="width: 100%;" type="text" value="{{$player->name}}" readonly>
+                            <input  type="hidden" class="idJugador" value="{{$player->id}}" readonly>
 
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="div2" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/819/186/large_2x/perspective-basketball-half-court-floor-with-line-on-wood-texture-background-illustration-vector.jpg');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;"> </div>
+
+            <div class="div3">
+                <div class="row">
+                    <div class="col-2">
+                        <label>Quintet name</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="name_quintet"  id="name_quintet"  class="form-control" placeholder="Quintet name...">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" onclick="eneviar()" class="btn btn-warning">Create Quintet</button>
                     </div>
                 </div>
-            @endforeach
-        </div>
-
-        <div class="div2" style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/819/186/large_2x/perspective-basketball-half-court-floor-with-line-on-wood-texture-background-illustration-vector.jpg');  height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover;"> </div>
-
-        <div class="div3">
-            <div class="row">
-                <div class="col-2">
-                    <label>Quintet name</label>
-                </div>
-                <div class="col">
-                    <input type="text" name="name_quintet"  id="name_quintet"  class="form-control" placeholder="Quintet name...">
-                </div>
-                <div class="col-2">
-                    <button type="submit" onclick="eneviar()" class="btn btn-warning">Create Quintet</button>
-                </div>
             </div>
-        </div>
 
-        {{--        <form method="POST" action="{{ route('panel.create.quintet.create') }}">--}}
-        <div class="div4 choice drop" > </div>
-        <div class="div5 choice drop" > </div>
-        <div class="div6 choice drop" > </div>
-        <div class="div7 choice drop" > </div>
-        <div class="div8 choice drop" > </div>
-        {{--        </form>--}}
-    </div>
+            {{--        <form method="POST" action="{{ route('panel.create.quintet.create') }}">--}}
+            <div class="div4 choice drop" > </div>
+            <div class="div5 choice drop" > </div>
+            <div class="div6 choice drop" > </div>
+            <div class="div7 choice drop" > </div>
+            <div class="div8 choice drop" > </div>
+            {{--        </form>--}}
+        </div>
     @endif
 @endsection
 
@@ -137,11 +137,11 @@
                 $.ajax({
                     url:'/createQuintetPanel/create',
                     data:{'player1': card1,
-                          'player2': card2,
-                          'player3': card3,
-                          'player4': card4,
-                          'player5': card5,
-                          'name_quintet': name_quintet},
+                        'player2': card2,
+                        'player3': card3,
+                        'player4': card4,
+                        'player5': card5,
+                        'name_quintet': name_quintet},
                     type:'post',
                     success: function (response) {
                         alert(response)
