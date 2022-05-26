@@ -12,7 +12,8 @@
                     <div class="dra" draggable="true">
                         <div class="col-md-12 cardQuintet">
                             <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6" class="rounded-circle" />
-                            <input style="width: 100%;" type="text" value="{{$player->name}}" readonly>
+
+                            <p>{{$player->name}}</p>
                             <input  type="hidden" class="idJugador" value="{{$player->id}}" readonly>
 
                         </div>
@@ -24,14 +25,14 @@
 
             <div class="div3">
                 <div class="row">
-                    <div class="col-2">
-                        <label>Quintet name</label>
-                    </div>
-                    <div class="col">
+                    <div class="col-12">
+                        <label style="font-weight: bold">Quintet name:</label>
                         <input type="text" name="name_quintet"  id="name_quintet"  class="form-control" placeholder="Quintet name...">
                     </div>
-                    <div class="col-2">
-                        <button type="submit" onclick="eneviar()" class="btn btn-warning">Create Quintet</button>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" onclick="eneviar()" class="btn btn-warning btn-lg btn-block mt-3 mb-3">Create Quintet</button>
                     </div>
                 </div>
             </div>
@@ -144,7 +145,13 @@
                         'name_quintet': name_quintet},
                     type:'post',
                     success: function (response) {
-                        alert(response)
+                        Swal.fire({
+                            title: 'Quintet created successfully',
+                            width: 600,
+                            padding: '3em',
+                            color: '#716add',
+                            background: '#fff url(https://reygif.com/media/2/jugador-baloncesto-15276.gif) no-repeat right ',
+                        })
                     },
                     error:function(x,xs,xt){
                         window.open(JSON.stringify(x));

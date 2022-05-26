@@ -30,7 +30,7 @@
                                 <h5 class="card-title">Position <i class="fa-solid fa-arrow-right"></i> {{$player->position}}</h5>
                                 <h5 class="card-title">Number <i class="fa-solid fa-arrow-right"></i> {{$player->id}}</h5>
                                 <a href="{{ route('panel.whatch.player', ['id_player' => $player->id]) }}"  class="btn center" style="color: white; text-shadow: 0 0 5px black; float:left; margin-right: 1%; width: 100%; background-color: #17408B !important;"><i class="fa-solid fa-eye"></i> Show</a>
-                                <a href="{{ route('panel.hire.player', ['id_player' => $player->id]) }}"  class="btn center btn-success" style="color: white; text-shadow: 0 0 5px black; float:left; margin-right: 1%; width: 100%;">Hire</a>
+                                <a href="{{ route('panel.hire.player', ['id_player' => $player->id]) }}"  class="btn center btn-success" style="color: white; text-shadow: 0 0 5px black; float:left; margin-top: 1%; margin-right: 1%; width: 100%;">Hire</a>
                             </div>
                         </div>
                     </div>
