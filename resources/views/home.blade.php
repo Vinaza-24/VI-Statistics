@@ -54,7 +54,9 @@
             </div>
         @endif
             @if(@Auth::user()->hasRole('Player'))
-                <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Player ') . Auth::user()->id }}</div>
+                <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">
+                    <h5>{{ __('Player ') . Auth::user()->id }}</h5>
+                </div>
                     <div class="card container" style="background-color: white !important; margin-bottom: 5%;">
                         <div class="container-fluid">
                             <div class="row" style="margin-top: 5%; text-align: center; display: flex; align-items: center;">

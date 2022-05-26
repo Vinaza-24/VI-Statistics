@@ -114,10 +114,16 @@ class PlayerController extends Controller
                 ->where('player_id', '=', $id_player)
                 ->get();
 
+            $games = DB::table('statistics')
+                ->select('*')
+                ->where('player_id', '=', $id_player)
+                ->groupBy('player_id')
+                ->count();
 
-            return view('coach.watchPlayer')->with(['avg' => $medias[0], 'player' => $player, 'noAVG' => 0]);
+
+            return view('coach.watchPlayer')->with(['noAVG' => 0, 'player' => $player, 'games' => $games, 'avg' => $medias[0]] );
         }else{
-            return view('coach.watchPlayer')->with(['noAVG' => 1, 'player' => $player]);
+            return view('coach.watchPlayer')->with(['noAVG' => 1, 'player' => $player, 'games' => 0]);
         }
     }
 
