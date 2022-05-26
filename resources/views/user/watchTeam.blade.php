@@ -3,11 +3,14 @@
 @section('content')
     <div class="container">
             <div class="card" style="margin-bottom: 5%;">
-                <div class="card-header" style="background-color: #17408B; color: white">
-                        <h4>{{ __('My Team') }}</h4>
+                <div class="card-header" style="background-color: #17408B; color: white; display: flex; justify-content: space-between; align-items: center;">
+                        <h5>{{ __('My Team') }}</h5>
+                        <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
+                            <i class="fa-solid fa-reply"></i>
+                        </a>
                 </div>
                 <div class="card-body" style="align-self: center;">
-                    <table class="table table-responsive-md" style="width: 100%;">
+                    <table class="table">
                         <thead class="thead" style="background-color: #17408b!important;color: white; font-weight: bold;">
                         <tr>
                             <th scope="col">Name</th>
@@ -23,13 +26,13 @@
                         @foreach ($avg as $player)
                             @if($player->minutos != null)
                                 <tr>
-                                    <td>{{$player->name}}</td>
-                                    <td>{{number_format($player->minutos, 2)}}</td>
-                                    <td>{{number_format($player->puntos, 2)}}</td>
-                                    <td>{{number_format($player->rebotes, 2)}}</td>
-                                    <td>{{number_format($player->asistencias, 2)}}</td>
-                                    <td>{{number_format($player->robo, 2)}}</td>
-                                    <td>{{number_format($player->tapones, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Name">{{$player->name}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Min">{{number_format($player->minutos, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Pts">{{number_format($player->puntos, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Reb">{{number_format($player->rebotes, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Ast">{{number_format($player->asistencias, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Rob">{{number_format($player->robo, 2)}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="Tap">{{number_format($player->tapones, 2)}}</td>
                                 </tr>
                             @else
                                 <tr>
@@ -45,7 +48,6 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 <div/>
             </div>
     </div>

@@ -2,12 +2,18 @@
 
 @section('content')
 
-    <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Player ') . $player->id }}</div>
+    <div class="card-header container" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;  display: flex; justify-content: space-between; align-items: center;">
+        <h5>{{ __('Player ') . $player->id }}</h5>
+        <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
+            <i class="fa-solid fa-reply"></i>
+        </a>
+    </div>
     <div class="card container" style="background-color: white !important; margin-bottom: 5%;">
         <div class="container-fluid">
-            <div class="row" style="margin-top: 5%; text-align: center;">
+            <div class="row" style="margin-top: 5%; text-align: center; display: flex; align-items: center;">
                 <div class="col-md-4">
                     <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6"  class="rounded-circle" style="width: 5rem" />
+                    <h5>{{$player->name}}</h5>
                 </div>
                 <div class="col-md-4">
                     <label style="font-weight: bold">Birth Date:</label>
@@ -20,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12" style=" display: flex; align-items: center; justify-content: center;">
-                    <div id="chart-container" style="width: 25rem; height: 25rem"></div>
+                    <div id="chart-container" style="width: 30rem; height: 30rem"></div>
                     @if($noAVG == 1)
                         <input type="hidden" id="min"  value="0"/>
                         <input type="hidden" id="pun"  value="0"/>
@@ -45,7 +51,6 @@
 @push('echarts-player')
 
     <script>
-
         $(document).ready(function () {
             let min = document.getElementById("min")?.value;
             let pun = document.getElementById("pun")?.value;
@@ -84,7 +89,7 @@
                             {name: 'Tapones', max: 10}
                         ],
                         center: ['50%', '50%'],
-                        radius: 150
+                        radius: 120
                     },
                 ],
                 series: [
@@ -110,8 +115,5 @@
 
             window.addEventListener('resize', myChart.resize);
         });
-
-
     </script>
-    </div>
 @endpush

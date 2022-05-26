@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>VI Sitatics</title>
+    <link rel="icon" href="http://localhost/vistatistics/resources/images/logo.png">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -107,7 +108,32 @@
             overflow: hidden;
         }
 
-        /**/
+        /*Table*/
+        @media screen and (max-width: 600px) {
+            table {
+                width:100%;
+            }
+            thead {
+                display: none;
+            }
+            tr:nth-of-type(2n) {
+                background-color: inherit;
+            }
+            tr td:first-child {
+                background: #f0f0f0;
+                font-weight:bold;
+                font-size:1.3em;
+            }
+            tbody td {
+                display: block;
+                text-align:center;
+            }
+            tbody td:before {
+                content: attr(data-th);
+                display: block;
+                text-align:center;
+            }
+        }
     </style>
 
     <!-- Data Table -->

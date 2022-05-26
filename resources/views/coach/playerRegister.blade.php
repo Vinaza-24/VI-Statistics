@@ -5,7 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Register') }}</div>
+                <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black; display: flex; justify-content: space-between; align-items: center;">
+                    <h5>{{ __('Register') }}</h5>
+                    <a class="navbar-brand" href="{{ route('home') }}" style="color: white !important;">
+                        <i class="fa-solid fa-reply"></i>
+                    </a>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('panel.create.player.create') }}">
