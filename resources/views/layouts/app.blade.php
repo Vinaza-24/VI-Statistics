@@ -60,8 +60,8 @@
             color: white;
 
             font-weight: bold ;
-            width: 7rem !important;
-            height: 5rem !important;
+            width: 5.5rem !important;
+            height: 6rem !important;
             margin-bottom: 0.5rem;
             text-align: -webkit-center;
         }
@@ -98,8 +98,9 @@
             width: 2.5rem;
             height: 2.5rem;
         }
-        .dra input{
-            width: 9rem !important;
+        .dra p{
+            width: 7rem !important;
+            color: black !important;
         }
 
         #chart-container, #chart-containerP1, #chart-containerP2 {

@@ -58,12 +58,12 @@
                                     @foreach($array['players'] as $player)
                                         <tr>
                                             <td>{{$player->name}}</td>
-                                            <td><input type="number" class="form-control" id="Min{{$player->id}}" name="Min{{$player->id}}" value="0"></td>
-                                            <td><input type="number" class="form-control" id="Pts{{$player->id}}" name="Pts{{$player->id}}" value="0"></td>
-                                            <td><input type="number" class="form-control" id="Reb{{$player->id}}" name="Reb{{$player->id}}" value="0"></td>
-                                            <td><input type="number" class="form-control" id="Ast{{$player->id}}" name="Ast{{$player->id}}" value="0"></td>
-                                            <td><input type="number" class="form-control" id="Rob{{$player->id}}" name="Rob{{$player->id}}" value="0"></td>
-                                            <td><input type="number" class="form-control" id="Tap{{$player->id}}" name="Tap{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Min"><input type="number" class="form-control" id="Min{{$player->id}}" name="Min{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Pts"><input type="number" class="form-control" id="Pts{{$player->id}}" name="Pts{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Reb"><input type="number" class="form-control" id="Reb{{$player->id}}" name="Reb{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Ast"><input type="number" class="form-control" id="Ast{{$player->id}}" name="Ast{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Rob"><input type="number" class="form-control" id="Rob{{$player->id}}" name="Rob{{$player->id}}" value="0"></td>
+                                            <td data-toggle="tooltip" data-placement="top" title="Top"><input type="number" class="form-control" id="Tap{{$player->id}}" name="Tap{{$player->id}}" value="0"></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
