@@ -102,9 +102,9 @@
             width: 9rem !important;
         }
 
-        #chart-container {
+        #chart-container, #chart-containerP1, #chart-containerP2 {
             position: relative;
-            height: 100vh;
+            height: 50vh;
             overflow: hidden;
         }
 
@@ -219,6 +219,7 @@
                                     <a class="dropdown-item" href="{{ route('panel.whatch.team') }}"><i class="fa-solid fa-sitemap"></i> {{ __('Team') }}</a>
                                     @can('create player')
                                         <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                                        <a class="dropdown-item" href="{{ route('panel.compare.players') }}"><i class="fa-solid fa-code-compare"></i> {{ __('Compare') }}</a>
                                     @endcan
                                 </div>
                             </li>
@@ -276,3 +277,5 @@
 @stack('my-data-panel')
 @stack('quintet')
 @stack('echarts-player')
+@stack('echarts-player-compare')
+@stack('compare-player')

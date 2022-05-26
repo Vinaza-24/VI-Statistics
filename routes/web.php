@@ -51,9 +51,13 @@ Route::get('/watchTeam' , [App\Http\Controllers\PlayerController::class, 'watchT
 Route::get('/playerPool' , [App\Http\Controllers\PlayerController::class, 'watchPlayerNoTeam'])->middleware(['auth','verified'])->name('panel.player.pool');
 Route::get('/playerPool/{id_player}' , [App\Http\Controllers\PlayerController::class, 'watchPlayerHire'])->middleware(['auth','verified'])->name('panel.hire.player');
 
+/*Panel Entrenador Comparar Jugadores*/
+Route::get('/comparePlayers' , [App\Http\Controllers\CompareController::class, 'index'])->middleware(['auth','verified'])->name('panel.compare.players');
+Route::post('/comparePlayers/statistics' , [App\Http\Controllers\CompareController::class, 'compare'])->middleware(['auth','verified'])->name('panel.compare.statistics');
 
 
-/*Panel Entrenador*/
+
+/*Panel User*/
 Route::get('/myData' , [App\Http\Controllers\PlayerController::class, 'myData'])->middleware(['auth','verified'])->name('panel.myData');
 Route::post('/myData/modify' , [App\Http\Controllers\PlayerController::class, 'myDataModify'])->middleware(['auth','verified'])->name('panel.myData.modify');
 

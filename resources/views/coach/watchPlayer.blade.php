@@ -11,17 +11,21 @@
     <div class="card container" style="background-color: white !important; margin-bottom: 5%;">
         <div class="container-fluid">
             <div class="row" style="margin-top: 5%; text-align: center; display: flex; align-items: center;">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <img src="https://us.123rf.com/450wm/jemastock/jemastock1707/jemastock170708629/81879106-jugador-de-baloncesto-masculino-atleta-deporte-avatar-icono-imagen-vector-ilustraci%C3%B3n-dise%C3%B1o.jpg?ver=6"  class="rounded-circle" style="width: 5rem" />
                     <h5>{{$player->name}}</h5>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label style="font-weight: bold">Birth Date:</label>
                     <h5>{{$player->birth_date}}</h5>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label style="font-weight: bold">Position:</label>
                     <h5>{{$player->position}}</h5>
+                </div>
+                <div class="col-md-3">
+                    <label style="font-weight: bold">Matches Played:</label>
+                    <h5>{{$games}}</h5>
                 </div>
             </div>
             <div class="row">
