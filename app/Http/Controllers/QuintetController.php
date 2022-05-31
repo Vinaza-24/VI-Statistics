@@ -62,8 +62,31 @@ class QuintetController extends Controller
             return $quintet;
     }
 
-    public function delete(Request $request)
+    public function watchQuintets()
     {
+        $quintet = DB::table('quintets')
+            ->select("id", "name")
+            ->where("team_id", "=", Auth::user()->team_id)
+            ->get();
 
+        return view('coach.watchQuintet', ['quintets' => $quintet]);
     }
+
+    public function watchQuintetsLoad(Request $request)
+    {
+        $quintets = DB::table('quintets')
+            ->select("player1_id", "player2_id", "player3_id", "player4_id", "player5_id")
+            ->where("team_id", "=", Auth::user()->team_id)
+            ->join('formed_quintet_teams', 'quintets.id', '=', 'formed_quintet_teams.quintet_id')
+            ->where("quintet_id", "=", $request->id)
+            ->get();
+        $a = [];
+        foreach ($quintets[0] as $q){
+            array_push($a, User::find($q)->name);
+        }
+
+        return $a;
+    }
+
+
 }

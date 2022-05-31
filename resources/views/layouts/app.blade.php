@@ -21,6 +21,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/quintet.css') }}" rel="stylesheet">
 
     <style>
         .form-check-input:checked {
@@ -30,83 +31,6 @@
 
         .a div{
             height: 20%!important;
-        }
-
-        /*QUINTETOS*/
-        .parent {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
-            height: 30rem;
-            background-color: white;
-
-        }
-        .div1 { grid-area: 1 / 1 / 4 / 2; text-align: -webkit-center; }
-        .div2 { grid-area: 1 / 2 / 4 / 5; }
-        .div3 { grid-area: 4 / 1 / 5 / 5; margin-top: 1rem; width: 80% !important; justify-self: center;}
-        .div4 { grid-area: 1 / 3 / 2 / 4; }
-        .div5 { grid-area: 2 / 2 / 3 / 3; }
-        .div6 { grid-area: 2 / 4 / 3 / 5; }
-        .div7 { grid-area: 3 / 2 / 4 / 3; }
-        .div8 { grid-area: 3 / 4 / 4 / 5; }
-
-        .dra{
-            background-color: snow;
-            border-color: gray;
-            border-width: 1px;
-            border-style: dotted;
-            color: white;
-
-            font-weight: bold ;
-            width: 5.5rem !important;
-            height: 6rem !important;
-            margin-bottom: 0.5rem;
-            text-align: -webkit-center;
-        }
-        .cardQuintet{
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            text-align-last: center;
-            width: 5rem !important;
-            height: 5rem !important;
-        }
-
-        .choice{
-            box-sizing: border-box;
-        }
-
-        .drop{
-            border-color: black;
-            border-width: 1px;
-            border-style: dotted;
-            margin-left: 29%;
-            margin-right: 29%;
-            height: 5rem !important;
-
-            text-align: -webkit-center;
-            align-self: center;
-        }
-        .my_scroll_div{
-            overflow-y: auto;
-            max-height: 28rem;
-        }
-
-        .dra img{
-            width: 2.5rem;
-            height: 2.5rem;
-        }
-        .dra p{
-            width: 7rem !important;
-            color: black !important;
-        }
-
-        #chart-container, #chart-containerP1, #chart-containerP2 {
-            position: relative;
-            height: 50vh;
-            overflow: hidden;
         }
 
         /*Table*/
@@ -219,7 +143,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('panel.whatch.team') }}"><i class="fa-solid fa-sitemap"></i> {{ __('Team') }}</a>
                                     @can('create player')
-                                        <a class="dropdown-item" href="{{ route('panel.create.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
+                                        <a class="dropdown-item" href="{{ route('panel.watch.quintet') }}"><i class="fa-solid fa-file"></i> {{ __('Quintet') }}</a>
                                         <a class="dropdown-item" href="{{ route('panel.compare.players') }}"><i class="fa-solid fa-code-compare"></i> {{ __('Compare') }}</a>
                                     @endcan
                                 </div>
@@ -280,3 +204,4 @@
 @stack('echarts-player')
 @stack('echarts-player-compare')
 @stack('compare-player')
+@stack('quintetWatch')
