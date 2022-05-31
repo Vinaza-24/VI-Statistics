@@ -125,7 +125,9 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-                document.getElementById('deleteAlert'+id).submit();
+                if(result["isConfirmed"]) {
+                    document.getElementById('deleteAlert' + id).submit();
+                }
             })
         }
 
