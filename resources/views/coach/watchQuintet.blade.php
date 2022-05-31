@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <input type="hidden" id="alertaNoQuintetos" value="{{ $numQuintet }}" />
-
-    @if($numQuintet != 0)
-    <div class="container">
+    <div class="container" onload="loadQuintet()">
         <div class="parentWatch">
             <div class="div1Watch">
                 <div class="container">
@@ -62,28 +59,13 @@
             </div>
         </div>
     </div>
-    @endif
 @endsection
 
 @push('quintetWatch')
     <script>
         $(document).ready(function()
         {
-            if(document.getElementById('alertaNoQuintetos').value != 0){
-                loadQuintet()
-            }else{
-                Swal.fire({
-                    title: 'Oops...',
-                    text: "You don't have any quintet created!",
-                    icon: 'error',
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Return'
-                }).then((result) => {
-                    window.location.href = "/home";
-                })
-            }
+            loadQuintet()
         })
 
         function loadQuintet(){
