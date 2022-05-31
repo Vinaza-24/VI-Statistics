@@ -69,7 +69,12 @@ class QuintetController extends Controller
             ->where("team_id", "=", Auth::user()->team_id)
             ->get();
 
-        return view('coach.watchQuintet', ['quintets' => $quintet]);
+        $quintetNum = DB::table('quintets')
+            ->select("id", "name")
+            ->where("team_id", "=", Auth::user()->team_id)
+            ->count();
+
+        return view('coach.watchQuintet', ['quintets' => $quintet, 'numQuintet'=> $quintetNum]);
     }
 
     public function watchQuintetsLoad(Request $request)
