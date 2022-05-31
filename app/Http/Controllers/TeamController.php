@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TeamController extends Controller
 {
@@ -21,19 +22,27 @@ class TeamController extends Controller
 
     public function create(Request $request)
     {
-        $team = new Team();
-        $team->name = $request->name;
-        $team->trophies = $request->trophies;
-        $team->save();
+        $teamRep = DB::table('teams')
+            ->where("name", "=", $request->name)
+            ->count();
+        
+        if($teamRep === 0) {
+            $team = new Team();
+            $team->name = $request->name;
+            $team->trophies = $request->trophies;
+            $team->save();
 
-        $user = User::find(auth()->id());
+            $user = User::find(auth()->id());
 
-        $user->team_id = $team->id;
-        $user->save();
+            $user->team_id = $team->id;
+            $user->save();
 
-        $user->removeRole('Coach');
-        $user->assignRole(['CoachTeam']);
+            $user->removeRole('Coach');
+            $user->assignRole(['CoachTeam']);
 
-        return redirect()->route('home')->with('success','Team Created Successfully');
+            return redirect()->route('home')->with('success', 'Team Created Successfully');
+        }else{
+            return redirect()->route('panel.create.team')->with('danger', 'There is already a team with that name');
+        }
     }
 }

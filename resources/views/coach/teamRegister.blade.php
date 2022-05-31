@@ -6,8 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" style="background-color: #17408B !important; color: white; text-shadow: 0 0 5px black;">{{ __('Create Team') }}</div>
-
                 <div class="card-body">
+
+                    @if(session('danger'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{session('danger')}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('panel.create.team.create') }}">
                         @csrf
 
