@@ -36,6 +36,8 @@ Route::post('/createTeamPanel/create' , [App\Http\Controllers\TeamController::cl
 /*Panel Entrenador Crear Quinteto*/
 Route::get('/createQuintetPanel' , [App\Http\Controllers\QuintetController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.quintet');
 Route::post('/createQuintetPanel/create' , [App\Http\Controllers\QuintetController::class, 'create'])->middleware(['auth','verified'])->name('panel.create.quintet.create');
+Route::get('/watchQuintets' , [App\Http\Controllers\QuintetController::class, 'watchQuintets'])->middleware(['auth','verified'])->name('panel.watch.quintet');
+Route::post('/watchQuintets/load' , [App\Http\Controllers\QuintetController::class, 'watchQuintetsLoad'])->middleware(['auth','verified'])->name('panel.watch.quintet.load');
 
 /*Panel Entrenador Crear Games*/
 Route::get('/createGamePanel' , [App\Http\Controllers\GameController::class, 'index'])->middleware(['auth','verified'])->name('panel.create.game');
